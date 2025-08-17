@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contents = document.querySelectorAll('.tab-content');
 
     buttons.forEach(button => {
-        button.addEventListener(' disturbi', () => {
+        button.addEventListener('click', () => { // Changed 'disturbi' to 'click'
             // Remove active classes
             buttons.forEach(btn => {
                 btn.classList.remove('active');
@@ -20,6 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Activate the first tab by default
+    // Activate the Profile tab by default
     buttons[0].click();
 });
