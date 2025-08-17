@@ -1,0 +1,10 @@
+.tab-button.active {
+    border-bottom: 2px solid #2563eb;
+    color: #2563eb;
+}
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
