@@ -3,95 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Girish's Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Your Name - Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.12/lib/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
 </head>
-<body class="bg-gray-100 font-sans">
-    <header class="bg-blue-600 text-white py-4">
-        <div class="container mx-auto px-4">
-            <h1 class="text-3xl font-bold">Girish Bhatta</h1>
-            <p class="text-lg">[Machine Learning Engineer/Data Scientist]</p>
-        </div>
-    </header>
-
-    <nav class="bg-white shadow">
-        <div class="container mx-auto px-4">
-            <ul class="flex space-x-4 py-4">
-                <li><button class="tab-button px-4 py-2 font-semibold text-blue-600 border-b-2 border-blue-600" data-tab="profile">Profile</button></li>
-                <li><button class="tab-button px-4 py-2 font-semibold text-gray-600 hover:text-blue-600" data-tab="projects">Projects</button></li>
-                <li><button class="tab-button px-4 py-2 font-semibold text-gray-600 hover:text-blue-600" data-tab="blogs">Blogs</button></li>
-                <li><button class="tab-button px-4 py-2 font-semibold text-gray-600 hover:text-blue-600" data-tab="skills">Skills & Tools</button></li>
-                <li><button class="tab-button px-4 py-2 font-semibold text-gray-600 hover:text-blue-600" data-tab="contact">Contact</button></li>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">YourName</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-8">
-        <section id="profile" class="tab-content">
-            <h2 class="text-2xl font-bold mb-4">About Me</h2>
-            <img src="assets/profile.jpg" alt="Profile Picture" class="w-32 h-32 rounded-full mb-4">
-            <p class="text-lg">Hi, I'm Girish, passionate about building ML solutions with Python, Ray, and Snowflake. I specialize in distributed computing and data analytics.</p>
-        </section>
-
-        <section id="projects" class="tab-content hidden">
-            <h2 class="text-2xl font-bold mb-4">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white p-4 shadow rounded">
-                    <h3 class="text-xl font-semibold"><a href="https://github.com/<your-username>/<repo1>" class="text-blue-600">Project 1</a></h3>
-                    <p>Built a machine learning model for customer churn prediction using Python and AWS.</p>
-                    <p><strong>Tech:</strong> Python, Scikit-learn, AWS</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded">
-                    <h3 class="text-xl font-semibold"><a href="https://github.com/<your-username>/<repo2>" class="text-blue-600">Project 2</a></h3>
-                    <p>Developed a distributed ML pipeline with Ray and Snowflake for real-time analytics.</p>
-                    <p><strong>Tech:</strong> Ray, Snowflake, Docker</p>
-                </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero active">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hello, I'm Your Name</h1>
+                <p>Full-stack developer passionate about creating beautiful, functional web applications and sharing knowledge through code and writing.</p>
+                <a href="#about" class="cta-button nav-link">Get to know me</a>
             </div>
-        </section>
-
-        <section id="blogs" class="tab-content hidden">
-            <h2 class="text-2xl font-bold mb-4">Blogs</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white p-4 shadow rounded">
-                    <h3 class="text-xl font-semibold"><a href="blogs/post1.html" class="text-blue-600">Building an ML Pipeline</a></h3>
-                    <p>A deep dive into distributed ML with Ray and Snowflake.</p>
-                    <p><strong>Posted:</strong> August 17, 2025</p>
-                </div>
-                <div class="bg-white p-4 shadow rounded">
-                    <h3 class="text-xl font-semibold"><a href="blogs/post2.html" class="text-blue-600">Spectral Clustering</a></h3>
-                    <p>Exploring community detection with spectral clustering.</p>
-                    <p><strong>Posted:</strong> August 17, 2025</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="tab-content hidden">
-            <h2 class="text-2xl font-bold mb-4">Skills & Tools</h2>
-            <ul class="list-disc pl-5">
-                <li><strong>Languages:</strong> Python, SQL, R</li>
-                <li><strong>Frameworks:</strong> Scikit-learn, TensorFlow, Ray, Snowflake</li>
-                <li><strong>Tools:</strong> AWS, Docker, Git, Snowflake SPCS</li>
-                <li><strong>Other:</strong> Data Wrangling, Model Deployment, Distributed Computing</li>
-            </ul>
-        </section>
-
-        <section id="contact" class="tab-content hidden">
-            <h2 class="text-2xl font-bold mb-4">Contact</h2>
-            <p><strong>Email:</strong> <a href="mailto:your.email@example.com" class="text-blue-600">your.email@example.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/your-profile" class="text-blue-600">linkedin.com/in/your-profile</a></p>
-            <p><strong>Twitter/X:</strong> <a href="https://x.com/yourhandle" class="text-blue-600">@yourhandle</a></p>
-            <p><strong>Website:</strong> <a href="https://yourwebsite.com" class="text-blue-600">yourwebsite.com</a></p>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto px-4">
-            <p>&copy; 2025 Girish Bhatta. All rights reserved.</p>
         </div>
-    </footer>
+    </section>
 
-    <script src="scripts.js"></script>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-image">👨‍💻</div>
+                <div class="about-text">
+                    <p>I'm a passionate developer with experience in modern web technologies. I love building applications that solve real-world problems and make people's lives easier.</p>
+                    <p>When I'm not coding, you can find me writing technical blogs, contributing to open source projects, or exploring new technologies. I believe in continuous learning and sharing knowledge with the developer community.</p>
+                    <div class="skills">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid" id="projects-container">
+                <!-- Projects will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <div class="container">
+            <h2>Latest Blog Posts</h2>
+            <div class="blog-grid" id="blog-container">
+                <!-- Blog posts will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post View (hidden by default) -->
+    <section id="blog-post" class="blog-post">
+        <div class="container">
+            <a href="#blog" class="back-button nav-link">← Back to Blog</a>
+            <div id="blog-post-content">
+                <!-- Individual blog post content will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
