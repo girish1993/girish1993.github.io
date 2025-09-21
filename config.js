@@ -1,300 +1,298 @@
- // Configuration - Update these with your actual data
+// Configuration - Update these with your actual data
 const CONFIG = {
-    // GitHub username
-    githubUsername: 'girish1993',
-    
-    // GitHub repository where your portfolio and blogs are hosted
-    githubRepo: 'girish1993.github.io',
-    
-    // Your name and details
-    name: 'Girish Bhatta',
-    title: 'ML Engineer | Data Scientist',
-    bio: 'I am a dedicated professional with expertise in software engineering and data science, specializing in building and deploying machine learning solutions for impactful business outcomes. My career began as a software developer, where a data-centric project sparked my passion for leveraging data to solve complex problems, leading me to pursue a Master’s degree in Data Science. Combining these disciplines, I excel in developing scalable, production-ready ML systems, with proficiency in end-to-end machine learning pipelines, MLOps practices, and CI/CD pipeline development.My core competencies include data wrangling, statistical analysis, feature engineering, hyperparameter optimization, model evaluation, and model deployment, with hands-on experience in cloud platforms like AWS and Azure, and data platforms like Snowflake. I am adept at using Python-based frameworks and tools for ML development and deployment. A quick learner, I actively engage with platforms like Kaggle to analyze complex datasets and stay current with advancements in data science and MLOps, ensuring adaptability to new challenges.',
-    
-    // Contact information
-    email: 'girishbhatta93@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/girish-bhatta-567431155/',
-
-    // Skills
-    skills: [
-        'Python', 'Snowflake','Sklearn', 'Pandas', 'numpy', 'Time Series Forecasting', 'API development',
-        'Machine Learning', 'Data Engineering', 'SQL', 'MLOps', 
-        'TypeScript','Docker', 'AWS', 'Azure', 'PostgreSQL', 'Git', 'Linux', 'System Design', 'Math for ML', 
-        'Ray Framework'
-    ],
-    
-    // Featured projects - Add your actual repo names and descriptions
-    projects: [
-        {
-            name: 'Car Insurance Anlaysis',
-            title: 'Car Insurance Analysis',
-            description: 'This project showcases a set of decisions and processes involved in a typical ML problem. This project outlines Data cleansin, Feature selection, Model building and understanding feature importances that add to the accuracy of the model.',
-            technologies: ['Python', 'Pandas', 'ML model building', 'Data Wrangling', 'Feature Importances', 'Model Performance Analysis '],
-            githubUrl: 'https://github.com/girish1993/Car-Insurance-analsysis',
-            liveUrl: null
-        },
-        {
-            name: 'ml-data-visualizer',
-            title: 'ML Data Visualizer',
-            description: 'This application makes use of web server to serve the static data file that contains multiple datasets as json data objects. These json objects are used to visualise as a network of nodes and relationships. The nodes are sites and the relationship are the weights of trade between each of the sites. The size of the nodes are proportional to the trade amount and the width of the amount of trade. The visualisation is created purely using D3.js',
-            technologies: ['Python', 'Flask', 'D3.js', 'Pandas'],
-            githubUrl: 'https://github.com/girish1993/Network-Data-Visualiser-using-D3.js',
-            liveUrl: null
-        }
-    ],
-    
-    // Blog configuration
-    blogFolder: 'blogs', // Folder in your GitHub repo where markdown files are stored
-    
-    // Sample blog posts (replace with actual data from your markdown files)
-    sampleBlogs: [
-        {
-            filename: 'getting-started-with-react-hooks.md',
-            title: 'Getting Started with React Hooks',
-            date: '2024-03-15',
-            excerpt: 'Learn how to use React Hooks to manage state and side effects in your functional components effectively.',
-            image: null,
-            tags: ['React', 'JavaScript', 'Frontend'],
-            content: `# Getting Started with React Hooks
-
-React Hooks revolutionized the way we write React components. In this post, we'll explore the most commonly used hooks and how they can make your code more efficient and readable.
-
-## What are React Hooks?
-
-React Hooks are functions that let you "hook into" React state and lifecycle features from function components. They were introduced in React 16.8 as a way to use state and other React features without writing a class component.
-
-## useState Hook
-
-The \`useState\` hook allows you to add state to functional components:
-
-\`\`\`javascript
-import React, { useState } from 'react';
-
-function Counter() {
-  const [count, setCount] = useState(0);
+  // Personal Information
+  name: 'Your Name',
+  title: 'Full-stack Developer',
+  heroDescription: 'Full-stack developer passionate about creating beautiful, functional web applications and sharing knowledge through code and writing.',
+  avatar: '👨‍💻', // You can use an emoji or replace with image path
   
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
-    </div>
-  );
-}
-\`\`\`
-
-## useEffect Hook
-
-The \`useEffect\` hook lets you perform side effects in function components. It serves the same purpose as \`componentDidMount\`, \`componentDidUpdate\`, and \`componentWillUnmount\` combined in React classes.
-
-\`\`\`javascript
-import React, { useState, useEffect } from 'react';
-
-function Example() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    document.title = \`You clicked \${count} times\`;
-  });
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
-}
-\`\`\`
-
-## Best Practices
-
-1. **Always use hooks at the top level** - Don't call hooks inside loops, conditions, or nested functions
-2. **Use multiple state variables** - Split related state into multiple state variables
-3. **Optimize with useMemo and useCallback** - Prevent unnecessary re-renders
-
-React Hooks make your code more readable and reusable. Start incorporating them into your projects today!`
-        },
-        {
-            filename: 'building-scalable-apis.md',
-            title: 'Building Scalable APIs with Node.js',
-            date: '2024-03-10',
-            excerpt: 'Best practices for designing and implementing scalable REST APIs using Node.js and Express.',
-            image: null,
-            tags: ['Node.js', 'API', 'Backend'],
-            content: `# Building Scalable APIs with Node.js
-
-Creating APIs that can handle growth is crucial for modern applications. Let's explore the key principles and practices for building scalable Node.js APIs.
-
-## Project Structure
-
-A well-organized project structure is the foundation of maintainable code:
-
-\`\`\`
-src/
-├── controllers/
-├── middleware/
-├── models/
-├── routes/
-├── services/
-├── utils/
-└── config/
-\`\`\`
-
-## Key Principles
-
-### 1. Separation of Concerns
-
-Keep your controllers thin by moving business logic to service layers:
-
-\`\`\`javascript
-// controllers/userController.js
-const userService = require('../services/userService');
-
-exports.createUser = async (req, res) => {
-  try {
-    const user = await userService.createUser(req.body);
-    res.status(201).json(user);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-\`\`\`
-
-### 2. Error Handling
-
-Implement centralized error handling middleware:
-
-\`\`\`javascript
-// middleware/errorHandler.js
-const errorHandler = (err, req, res, next) => {
-  const { statusCode = 500, message } = err;
+  // About Section
+  bio: [
+      "I'm a passionate developer with experience in modern web technologies. I love building applications that solve real-world problems and make people's lives easier.",
+      "When I'm not coding, you can find me writing technical blogs, contributing to open source projects, or exploring new technologies. I believe in continuous learning and sharing knowledge with the developer community.",
+      "My journey in software development started over 5 years ago, and I've had the privilege of working with startups and established companies to bring their digital visions to life."
+  ],
   
-  res.status(statusCode).json({
-    status: 'error',
-    statusCode,
-    message
-  });
-};
+  // Skills
+  skills: [
+      'JavaScript', 'React', 'Node.js', 'Python', 
+      'TypeScript', 'GraphQL', 'Docker', 'AWS',
+      'MongoDB', 'PostgreSQL', 'Git', 'Linux'
+  ],
+  
+  // Contact information
+  email: 'your.email@example.com',
+  linkedin: 'https://linkedin.com/in/yourusername',
+  twitter: 'https://twitter.com/yourusername',
+  github: 'https://github.com/yourusername',
+  
+  // GitHub configuration
+  githubUsername: 'yourusername',
+  githubRepo: 'portfolio',
+  blogFolder: 'blogs',
+  
+  // Featured projects
+  projects: [
+      {
+          name: 'awesome-web-app',
+          title: 'Awesome Web App',
+          description: 'A full-stack web application built with React and Node.js that helps users manage their daily tasks with real-time collaboration features.',
+          technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
+          githubUrl: 'https://github.com/yourusername/awesome-web-app',
+          liveUrl: 'https://awesome-web-app.vercel.app'
+      },
+      {
+          name: 'ml-data-visualizer',
+          title: 'ML Data Visualizer',
+          description: 'An interactive data visualization tool that helps data scientists explore and understand machine learning datasets through beautiful charts and graphs.',
+          technologies: ['Python', 'Flask', 'D3.js', 'Pandas'],
+          githubUrl: 'https://github.com/yourusername/ml-data-visualizer',
+          liveUrl: null
+      },
+      {
+          name: 'mobile-expense-tracker',
+          title: 'Mobile Expense Tracker',
+          description: 'A React Native mobile app for tracking expenses with category-based analytics, budget alerts, and cloud synchronization.',
+          technologies: ['React Native', 'Firebase', 'Redux', 'Chart.js'],
+          githubUrl: 'https://github.com/yourusername/mobile-expense-tracker',
+          liveUrl: null
+      },
+      {
+          name: 'api-gateway-service',
+          title: 'API Gateway Service',
+          description: 'A scalable microservices API gateway built with Node.js and Express, featuring rate limiting, authentication, and load balancing.',
+          technologies: ['Node.js', 'Express', 'Redis', 'Docker'],
+          githubUrl: 'https://github.com/yourusername/api-gateway-service',
+          liveUrl: null
+      }
+  ],
+  
+  // Blog posts
+  blogPosts: [
+      {
+          id: 'react-hooks',
+          title: 'Getting Started with React Hooks',
+          date: '2024-03-15',
+          excerpt: 'Learn how to use React Hooks to manage state and side effects in your functional components effectively.',
+          icon: '📝',
+          tags: ['React', 'JavaScript', 'Frontend'],
+          filename: 'blog-react-hooks.html'
+      },
+      {
+          id: 'scalable-apis',
+          title: 'Building Scalable APIs with Node.js',
+          date: '2024-03-10',
+          excerpt: 'Best practices for designing and implementing scalable REST APIs using Node.js and Express.',
+          icon: '🚀',
+          tags: ['Node.js', 'API', 'Backend'],
+          filename: 'blog-scalable-apis.html'
+      },
+      {
+          id: 'modern-css',
+          title: 'Modern CSS Techniques for Better UX',
+          date: '2024-03-05',
+          excerpt: 'Explore modern CSS features like Grid, Flexbox, and custom properties to create better user experiences.',
+          icon: '🎨',
+          tags: ['CSS', 'Frontend', 'UX'],
+          filename: 'blog-modern-css.html'
+      },
+      {
+          id: 'performance-optimization',
+          title: 'Performance Optimization in Web Apps',
+          date: '2024-02-28',
+          excerpt: 'Essential techniques for improving web application performance, from bundle splitting to image optimization.',
+          icon: '⚡',
+          tags: ['Performance', 'JavaScript', 'Optimization'],
+          filename: 'blog-performance.html'
+      },
+      {
+          id: 'devops-practices',
+          title: 'DevOps Best Practices for Developers',
+          date: '2024-02-22',
+          excerpt: 'Learn essential DevOps practices that every developer should know, from CI/CD to containerization.',
+          icon: '🔧',
+          tags: ['DevOps', 'CI/CD', 'Docker'],
+          filename: 'blog-devops.html'
+      },
+      {
+          id: 'web-accessibility',
+          title: 'Web Accessibility: A Complete Guide',
+          date: '2024-02-15',
+          excerpt: 'Make your web applications accessible to everyone with these comprehensive accessibility guidelines and best practices.',
+          icon: '🌐',
+          tags: ['Accessibility', 'UX', 'Web Standards'],
+          filename: 'blog-accessibility.html'
+      }
+  ],
 
-module.exports = errorHandler;
-\`\`\`
+  // Blog generator function - creates individual blog HTML files
+  generateBlogHTML: function(blogPost, content) {
+      const formattedDate = new Date(blogPost.date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+      });
 
-### 3. Input Validation
+      const tagsHTML = blogPost.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
 
-Use validation libraries like Joi or express-validator:
+      return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${blogPost.title} - ${this.name}</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+      .blog-post {
+          padding: 6rem 0 4rem 0;
+          min-height: 100vh;
+      }
+      
+      .blog-header {
+          text-align: center;
+          margin-bottom: 3rem;
+          padding-bottom: 2rem;
+          border-bottom: 1px solid var(--border);
+      }
+      
+      .blog-title {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          color: var(--text-primary);
+      }
+      
+      .blog-meta {
+          color: var(--text-muted);
+          font-size: 1rem;
+          margin-bottom: 1rem;
+      }
+      
+      .blog-tags {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+      }
+      
+      .blog-content {
+          max-width: 800px;
+          margin: 0 auto;
+          color: var(--text-secondary);
+          line-height: 1.8;
+          font-size: 1.1rem;
+      }
+      
+      .blog-content h2 {
+          color: var(--text-primary);
+          margin: 2.5rem 0 1rem 0;
+          font-size: 1.8rem;
+      }
+      
+      .blog-content h3 {
+          color: var(--text-primary);
+          margin: 2rem 0 1rem 0;
+          font-size: 1.4rem;
+      }
+      
+      .blog-content p {
+          margin-bottom: 1.5rem;
+      }
+      
+      .blog-content code {
+          background: var(--bg-secondary);
+          color: var(--accent);
+          padding: 0.25rem 0.5rem;
+          border-radius: 4px;
+          font-size: 0.9rem;
+      }
+      
+      .blog-content pre {
+          background: var(--bg-secondary);
+          padding: 1.5rem;
+          border-radius: 8px;
+          overflow-x: auto;
+          margin: 2rem 0;
+          border: 1px solid var(--border);
+      }
+      
+      .blog-content pre code {
+          background: none;
+          padding: 0;
+          color: var(--text-secondary);
+      }
+      
+      .blog-content ul, .blog-content ol {
+          margin-left: 2rem;
+          margin-bottom: 1.5rem;
+      }
+      
+      .blog-content li {
+          margin-bottom: 0.5rem;
+      }
+      
+      .back-link {
+          display: inline-block;
+          margin-bottom: 2rem;
+          color: var(--accent);
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: color 0.3s ease;
+      }
+      
+      .back-link:hover {
+          color: var(--accent-hover);
+      }
+      
+      @media (max-width: 768px) {
+          .blog-title {
+              font-size: 2rem;
+          }
+          
+          .blog-content {
+              font-size: 1rem;
+          }
+          
+          .blog-content h2 {
+              font-size: 1.5rem;
+          }
+          
+          .blog-content h3 {
+              font-size: 1.3rem;
+          }
+      }
+  </style>
+</head>
+<body>
+  <nav>
+      <div class="nav-container">
+          <div class="logo">${this.name}</div>
+          <ul class="nav-links">
+              <li><a href="index.html#home">Home</a></li>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="index.html#projects">Projects</a></li>
+              <li><a href="index.html#blog">Blog</a></li>
+          </ul>
+      </div>
+  </nav>
 
-\`\`\`javascript
-const Joi = require('joi');
-
-const userSchema = Joi.object({
-  name: Joi.string().min(2).max(50).required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().min(8).required()
-});
-\`\`\`
-
-## Performance Optimization
-
-- Use caching strategies (Redis)
-- Implement database connection pooling
-- Add request rate limiting
-- Use compression middleware
-- Optimize database queries
-
-Building scalable APIs requires careful planning and adherence to best practices. Start with a solid foundation and iterate as your application grows.`
-        },
-        {
-            filename: 'modern-css-techniques.md',
-            title: 'Modern CSS Techniques for Better UX',
-            date: '2024-03-05',
-            excerpt: 'Explore modern CSS features like Grid, Flexbox, and custom properties to create better user experiences.',
-            image: null,
-            tags: ['CSS', 'Frontend', 'UX'],
-            content: `# Modern CSS Techniques for Better UX
-
-CSS has evolved tremendously in recent years. Let's explore some modern techniques that can significantly improve user experience.
-
-## CSS Grid Layout
-
-CSS Grid provides a powerful way to create complex layouts:
-
-\`\`\`css
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.header {
-  grid-column: 1 / -1;
-}
-\`\`\`
-
-## Custom Properties (CSS Variables)
-
-CSS custom properties make themes and dynamic styling much easier:
-
-\`\`\`css
-:root {
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --spacing: 1rem;
-}
-
-.button {
-  background-color: var(--primary-color);
-  padding: var(--spacing);
-}
-\`\`\`
-
-## Flexbox for Component Layout
-
-Flexbox excels at component-level layouts:
-
-\`\`\`css
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 300px;
-}
-
-.card-content {
-  flex: 1;
-}
-\`\`\`
-
-## Modern Animations
-
-Use CSS transforms and transitions for smooth animations:
-
-\`\`\`css
-.button {
-  transition: transform 0.2s ease;
-}
-
-.button:hover {
-  transform: translateY(-2px);
-}
-\`\`\`
-
-## Container Queries
-
-The future of responsive design:
-
-\`\`\`css
-@container (min-width: 400px) {
-  .card {
-    display: flex;
-    flex-direction: row;
+  <div class="blog-post">
+      <div class="container">
+          <a href="index.html#blog" class="back-link">← Back to Blog</a>
+          
+          <div class="blog-header">
+              <h1 class="blog-title">${blogPost.title}</h1>
+              <div class="blog-meta">${formattedDate}</div>
+              <div class="blog-tags">
+                  ${tagsHTML}
+              </div>
+          </div>
+          
+          <div class="blog-content">
+              ${content}
+          </div>
+      </div>
+  </div>
+</body>
+</html>`;
   }
-}
-\`\`\`
-
-These modern CSS techniques help create more maintainable and user-friendly interfaces. Experiment with them in your next project!`
-        }
-    ]
 };
