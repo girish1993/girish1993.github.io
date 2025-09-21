@@ -400,24 +400,14 @@ async function createGitHubFile(filename, content, message) {
     }
 }
 
-// Smooth scrolling for anchor links (updated to work with new navigation)
+// Smooth scrolling for anchor links
 document.addEventListener('click', function(e) {
-    // Handle back button in blog posts
-    if (e.target.classList.contains('back-button')) {
+    if (e.target.matches('a[href^="#"]')) {
         e.preventDefault();
-        const targetId = e.target.getAttribute('href').substring(1);
-        showSection(targetId);
-        return;
-    }
-    
-    // Handle other anchor links within the same section
-    if (e.target.matches('a[href^="#"]') && !e.target.classList.contains('nav-link')) {
         const targetId = e.target.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
         
-        // Only scroll if target is within current active section
-        if (targetElement && targetElement.closest('section.active')) {
-            e.preventDefault();
+        if (targetElement) {
             targetElement.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
