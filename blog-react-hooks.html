@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with React Hooks - Your Name</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Blog-specific styles */
+        .blog-post {
+            padding: 6rem 0 4rem 0;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .blog-meta {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .blog-content h2 {
+            color: var(--text-primary);
+            margin: 2.5rem 0 1rem 0;
+            font-size: 1.8rem;
+        }
+        
+        .blog-content h3 {
+            color: var(--text-primary);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.4rem;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content code {
+            background: var(--bg-secondary);
+            color: var(--accent);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .blog-content pre {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+        }
+        
+        .blog-content pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-secondary);
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-hover);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                font-size: 1rem;
+            }
+            
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .blog-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">YourName</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Post -->
+    <div class="blog-post">
+        <div class="container">
+            <a href="index.html#blog" class="back-link">← Back to Blog</a>
+            
+            <div class="blog-header">
+                <h1 class="blog-title">Getting Started with React Hooks</h1>
+                <div class="blog-meta">March 15, 2024</div>
+                <div class="blog-tags">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Frontend</span>
+                </div>
+            </div>
+            
+            <div class="blog-content">
+                <p>React Hooks revolutionized the way we write React components. In this post, we'll explore the most commonly used hooks and how they can make your code more efficient and readable.</p>
+
+                <h2>What are React Hooks?</h2>
+                <p>React Hooks are functions that let you "hook into" React state and lifecycle features from function components. They were introduced in React 16.8 as a way to use state and other React features without writing a class component.</p>
+
+                <h2>useState Hook</h2>
+                <p>The <code>useState</code> hook allows you to add state to functional components:</p>
+
+                <pre><code>import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Increment
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+                <h2>useEffect Hook</h2>
+                <p>The <code>useEffect</code> hook lets you perform side effects in function components. It serves the same purpose as <code>componentDidMount</code>, <code>componentDidUpdate</code>, and <code>componentWillUnmount</code> combined in React classes.</p>
+
+                <pre><code>import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() =&gt; {
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+                <h3>Effect Cleanup</h3>
+                <p>Some effects require cleanup. For example, we might want to set up a subscription to some external data source. In that case, it's important to clean up so that we don't introduce a memory leak:</p>
+
+                <pre><code>useEffect(() =&gt; {
+  const subscription = subscribeToSomething();
+  
+  return function cleanup() {
+    subscription.unsubscribe();
+  };
+}, []);</code></pre>
+
+                <h2>Best Practices</h2>
+                <p>Here are some key best practices when working with React Hooks:</p>
+
+                <h3>1. Always use hooks at the top level</h3>
+                <p>Don't call hooks inside loops, conditions, or nested functions. This ensures that hooks are called in the same order every time the component renders:</p>
+
+                <pre><code>// ❌ Don't do this
+function BadExample() {
+  if (someCondition) {
+    const [count, setCount] = useState(0); // Wrong!
+  }
+}
+
+// ✅ Do this instead
+function GoodExample() {
+  const [count, setCount] = useState(0);
+  
+  if (someCondition) {
+    // Use the state here
+  }
+}</code></pre>
+
+                <h3>2. Use multiple state variables</h3>
+                <p>Split related state into multiple state variables rather than combining them into a single object:</p>
+
+                <pre><code>// ✅ Good approach
+function UserProfile() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState(0);
+}</code></pre>
+
+                <h3>3. Optimize with useMemo and useCallback</h3>
+                <p>Use these hooks to prevent unnecessary re-renders and computations:</p>
+
+                <pre><code>import { useMemo, useCallback } from 'react';
+
+function ExpensiveComponent({ items, onItemClick }) {
+  const expensiveValue = useMemo(() => {
+    return items.reduce((sum, item) => sum + item.value, 0);
+  }, [items]);
+
+  const handleClick = useCallback((item) => {
+    onItemClick(item);
+  }, [onItemClick]);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Total: {expensiveValue}&lt;/p&gt;
+      {items.map(item => (
+        &lt;button key={item.id} onClick={() => handleClick(item)}&gt;
+          {item.name}
+        &lt;/button&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+                <h2>Custom Hooks</h2>
+                <p>One of the most powerful features of hooks is the ability to create your own custom hooks. Custom hooks allow you to extract component logic into reusable functions:</p>
+
+                <pre><code>// Custom hook for API calls
+function useApi(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(url);
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
+}
+
+// Using the custom hook
+function UserList() {
+  const { data: users, loading, error } = useApi('/api/users');
+
+  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+  if (error) return &lt;div&gt;Error: {error.message}&lt;/div&gt;;
+
+  return (
+    &lt;ul&gt;
+      {users.map(user => (
+        &lt;li key={user.id}&gt;{user.name}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+
+                <h2>Common Pitfalls to Avoid</h2>
+                <ul>
+                    <li><strong>Stale closures:</strong> Be careful when using state in event handlers or async functions</li>
+                    <li><strong>Missing dependencies:</strong> Always include all dependencies in useEffect's dependency array</li>
+                    <li><strong>Infinite loops:</strong> Avoid creating new objects or functions on every render when they're used as dependencies</li>
+                    <li><strong>Not using the functional update pattern:</strong> When updating state based on previous state, use the functional form</li>
+                </ul>
+
+                <pre><code>// ❌ Avoid this
+setCount(count + 1);
+
+// ✅ Use this instead
+setCount(prevCount => prevCount + 1);</code></pre>
+
+                <h2>Conclusion</h2>
+                <p>React Hooks provide a powerful and elegant way to manage state and side effects in functional components. They make your code more readable, reusable, and easier to test. Start incorporating them into your projects today, and you'll find that your React code becomes much more enjoyable to write and maintain.</p>
+
+                <p>Remember to follow the rules of hooks, use them at the top level, and take advantage of custom hooks to share logic between components. With these practices in mind, you'll be well on your way to mastering React Hooks!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
