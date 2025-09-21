@@ -125,6 +125,7 @@ section {
     min-height: 100vh;
     padding: 6rem 0;
     display: none;
+    position: relative;
 }
 
 section.active {

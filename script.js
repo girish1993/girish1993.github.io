@@ -2,28 +2,68 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
+    let isTransitioning = false;
 
     function showSection(targetId) {
-        sections.forEach(section => {
-            section.classList.remove('active');
-        });
+        if (isTransitioning) return;
         
+        // Don't do anything if the target section is already active
         const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.classList.add('active');
+        if (targetSection && targetSection.classList.contains('active')) {
+            return;
         }
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-        });
-        
-        const activeLink = document.querySelector(`[href="#${targetId}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
+        isTransitioning = true;
+
+        // Fade out current section
+        const currentSection = document.querySelector('section.active');
+        if (currentSection) {
+            currentSection.style.opacity = '0';
+            currentSection.style.transform = 'translateY(20px)';
         }
 
-        // Scroll to top when switching sections
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+            // Hide all sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+                section.style.opacity = '';
+                section.style.transform = '';
+            });
+            
+            // Show target section
+            if (targetSection) {
+                targetSection.classList.add('active');
+                // Force a reflow
+                targetSection.offsetHeight;
+                // Fade in new section
+                targetSection.style.opacity = '0';
+                targetSection.style.transform = 'translateY(20px)';
+                
+                requestAnimationFrame(() => {
+                    targetSection.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    targetSection.style.opacity = '1';
+                    targetSection.style.transform = 'translateY(0)';
+                });
+            }
+
+            // Update navigation
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const activeLink = document.querySelector(`[href="#${targetId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            // Reset transition flag
+            setTimeout(() => {
+                isTransitioning = false;
+                if (targetSection) {
+                    targetSection.style.transition = '';
+                }
+            }, 300);
+        }, currentSection ? 150 : 0);
     }
 
     navLinks.forEach(link => {
@@ -245,44 +285,72 @@ function formatDate(dateString) {
 
 // Show individual blog post
 function showBlogPost(blog) {
+    if (isTransitioning) return;
+    
     const blogPostSection = document.getElementById('blog-post');
     const blogPostContent = document.getElementById('blog-post-content');
     
-    // Hide all other sections
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-    });
+    isTransitioning = true;
     
-    // Show blog post section
-    blogPostSection.classList.add('active');
+    // Fade out current section
+    const currentSection = document.querySelector('section.active');
+    if (currentSection) {
+        currentSection.style.opacity = '0';
+        currentSection.style.transform = 'translateY(20px)';
+    }
     
-    // Parse markdown content
-    const htmlContent = marked.parse(blog.content);
-    
-    // Create tags HTML if available
-    const tagsHtml = blog.tags && blog.tags.length > 0 ? 
-        `<div class="blog-tags" style="margin-top: 1rem;">
-            ${blog.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
-        </div>` : '';
-    
-    blogPostContent.innerHTML = `
-        <div class="blog-post-header">
-            <h1>${blog.title}</h1>
-            <div class="blog-post-meta">${formatDate(blog.date)}</div>
-            ${tagsHtml}
-        </div>
-        <div class="blog-post-content">
-            ${htmlContent}
-        </div>
-    `;
-    
-    // Update navigation
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-    });
-    
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+        // Hide all other sections
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.remove('active');
+            section.style.opacity = '';
+            section.style.transform = '';
+        });
+        
+        // Show blog post section
+        blogPostSection.classList.add('active');
+        
+        // Parse markdown content
+        const htmlContent = marked.parse(blog.content);
+        
+        // Create tags HTML if available
+        const tagsHtml = blog.tags && blog.tags.length > 0 ? 
+            `<div class="blog-tags" style="margin-top: 1rem;">
+                ${blog.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+            </div>` : '';
+        
+        blogPostContent.innerHTML = `
+            <div class="blog-post-header">
+                <h1>${blog.title}</h1>
+                <div class="blog-post-meta">${formatDate(blog.date)}</div>
+                ${tagsHtml}
+            </div>
+            <div class="blog-post-content">
+                ${htmlContent}
+            </div>
+        `;
+        
+        // Update navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        // Fade in blog post section
+        blogPostSection.style.opacity = '0';
+        blogPostSection.style.transform = 'translateY(20px)';
+        
+        requestAnimationFrame(() => {
+            blogPostSection.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            blogPostSection.style.opacity = '1';
+            blogPostSection.style.transform = 'translateY(0)';
+        });
+        
+        // Reset transition flag
+        setTimeout(() => {
+            isTransitioning = false;
+            blogPostSection.style.transition = '';
+        }, 300);
+    }, currentSection ? 150 : 0);
 }
 
 // Utility functions for GitHub integration
@@ -332,14 +400,24 @@ async function createGitHubFile(filename, content, message) {
     }
 }
 
-// Smooth scrolling for anchor links
+// Smooth scrolling for anchor links (updated to work with new navigation)
 document.addEventListener('click', function(e) {
-    if (e.target.matches('a[href^="#"]')) {
+    // Handle back button in blog posts
+    if (e.target.classList.contains('back-button')) {
         e.preventDefault();
+        const targetId = e.target.getAttribute('href').substring(1);
+        showSection(targetId);
+        return;
+    }
+    
+    // Handle other anchor links within the same section
+    if (e.target.matches('a[href^="#"]') && !e.target.classList.contains('nav-link')) {
         const targetId = e.target.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
         
-        if (targetElement) {
+        // Only scroll if target is within current active section
+        if (targetElement && targetElement.closest('section.active')) {
+            e.preventDefault();
             targetElement.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
