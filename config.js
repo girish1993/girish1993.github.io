@@ -1,68 +1,50 @@
 // Configuration - Update these with your actual data
 const CONFIG = {
   // Personal Information
-  name: 'Your Name',
-  title: 'Full-stack Developer',
+  name: 'Girish Bhatta',
+  title: 'ML Engineer | Data Scientist',
   heroDescription: 'Full-stack developer passionate about creating beautiful, functional web applications and sharing knowledge through code and writing.',
-  avatar: '👨‍💻', // You can use an emoji or replace with image path
+  avatar: 'assets/profile.jpg', // You can use an emoji or replace with image path
   
   // About Section
   bio: [
-      "I'm a passionate developer with experience in modern web technologies. I love building applications that solve real-world problems and make people's lives easier.",
-      "When I'm not coding, you can find me writing technical blogs, contributing to open source projects, or exploring new technologies. I believe in continuous learning and sharing knowledge with the developer community.",
-      "My journey in software development started over 5 years ago, and I've had the privilege of working with startups and established companies to bring their digital visions to life."
+      `I am a dedicated professional with expertise in software engineering and data science, specializing in building and deploying machine learning solutions for impactful business outcomes. My career began as a software developer, where a data-centric project sparked my passion for leveraging data to solve complex problems, leading me to pursue a Master’s degree in Data Science. Combining these disciplines, I excel in developing scalable, production-ready ML systems, with proficiency in end-to-end machine learning pipelines, MLOps practices, and CI/CD pipeline development.My core competencies include data wrangling, statistical analysis, feature engineering, hyperparameter optimization, model evaluation, and model deployment, with hands-on experience in cloud platforms like AWS and Azure, and data platforms like Snowflake. I am adept at using Python-based frameworks and tools for ML development and deployment. A quick learner, I actively engage with platforms like Kaggle to analyze complex datasets and stay current with advancements in data science and MLOps, ensuring adaptability to new challenges.`
   ],
   
   // Skills
   skills: [
-      'JavaScript', 'React', 'Node.js', 'Python', 
-      'TypeScript', 'GraphQL', 'Docker', 'AWS',
-      'MongoDB', 'PostgreSQL', 'Git', 'Linux'
+    'Python', 'Snowflake','Sklearn', 'Pandas', 'numpy', 'Time Series Forecasting', 'API development',
+    'Machine Learning', 'Data Engineering', 'SQL', 'MLOps', 
+    'TypeScript','Docker', 'AWS', 'Azure', 'PostgreSQL', 'Git', 'Linux', 'System Design', 'Math for ML', 
+    'Ray Framework'
   ],
   
   // Contact information
-  email: 'your.email@example.com',
-  linkedin: 'https://linkedin.com/in/yourusername',
-  twitter: 'https://twitter.com/yourusername',
-  github: 'https://github.com/yourusername',
+  email: 'girishbhatta93@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/girish-bhatta-567431155/',
+  github: 'https://github.com/girish1993',
   
   // GitHub configuration
-  githubUsername: 'yourusername',
-  githubRepo: 'portfolio',
+  githubUsername: 'girish1993',
+  githubRepo: 'girish1993.github.io',
   blogFolder: 'blogs',
   
   // Featured projects
   projects: [
       {
-          name: 'awesome-web-app',
-          title: 'Awesome Web App',
-          description: 'A full-stack web application built with React and Node.js that helps users manage their daily tasks with real-time collaboration features.',
-          technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-          githubUrl: 'https://github.com/yourusername/awesome-web-app',
-          liveUrl: 'https://awesome-web-app.vercel.app'
+        name: 'Car Insurance Anlaysis',
+        title: 'Car Insurance Analysis',
+        description: 'This project showcases a set of decisions and processes involved in a typical ML problem. This project outlines Data cleansin, Feature selection, Model building and understanding feature importances that add to the accuracy of the model.',
+        technologies: ['Python', 'Pandas', 'ML model building', 'Data Wrangling', 'Feature Importances', 'Model Performance Analysis '],
+        githubUrl: 'https://github.com/girish1993/Car-Insurance-analsysis',
+        liveUrl: null
       },
       {
           name: 'ml-data-visualizer',
           title: 'ML Data Visualizer',
-          description: 'An interactive data visualization tool that helps data scientists explore and understand machine learning datasets through beautiful charts and graphs.',
+          description: 'This application makes use of web server to serve the static data file that contains multiple datasets as json data objects. These json objects are used to visualise as a network of nodes and relationships. The nodes are sites and the relationship are the weights of trade between each of the sites. The size of the nodes are proportional to the trade amount and the width of the amount of trade. The visualisation is created purely using D3.js',
           technologies: ['Python', 'Flask', 'D3.js', 'Pandas'],
-          githubUrl: 'https://github.com/yourusername/ml-data-visualizer',
-          liveUrl: null
-      },
-      {
-          name: 'mobile-expense-tracker',
-          title: 'Mobile Expense Tracker',
-          description: 'A React Native mobile app for tracking expenses with category-based analytics, budget alerts, and cloud synchronization.',
-          technologies: ['React Native', 'Firebase', 'Redux', 'Chart.js'],
-          githubUrl: 'https://github.com/yourusername/mobile-expense-tracker',
-          liveUrl: null
-      },
-      {
-          name: 'api-gateway-service',
-          title: 'API Gateway Service',
-          description: 'A scalable microservices API gateway built with Node.js and Express, featuring rate limiting, authentication, and load balancing.',
-          technologies: ['Node.js', 'Express', 'Redis', 'Docker'],
-          githubUrl: 'https://github.com/yourusername/api-gateway-service',
+          githubUrl: 'https://github.com/girish1993/Network-Data-Visualiser-using-D3.js',
           liveUrl: null
       }
   ],
