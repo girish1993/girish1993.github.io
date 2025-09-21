@@ -1,43 +1,21 @@
-// Navigation functionality
+// Navigation functionality - Clean and Simple
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
-    let isTransitioning = false;
 
     function showSection(targetId) {
-        console.log('Switching to section:', targetId); // Debug log
-        
-        if (isTransitioning) {
-            console.log('Transition in progress, skipping');
-            return;
-        }
-        
-        const targetSection = document.getElementById(targetId);
-        if (!targetSection) {
-            console.log('Target section not found:', targetId);
-            return;
-        }
-
-        // Don't do anything if the target section is already active
-        if (targetSection.classList.contains('active')) {
-            console.log('Target section already active');
-            return;
-        }
-
-        isTransitioning = true;
-        console.log('Starting transition to:', targetId);
-
-        // Get current active section
-        const currentSection = document.querySelector('section.active');
-        
-        // Immediately hide all sections and show target
+        // Hide all sections
         sections.forEach(section => {
             section.classList.remove('active');
         });
         
-        targetSection.classList.add('active');
+        // Show target section
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
 
-        // Update navigation immediately
+        // Update navigation
         navLinks.forEach(link => {
             link.classList.remove('active');
         });
@@ -46,46 +24,30 @@ document.addEventListener('DOMContentLoaded', function() {
         if (activeLink) {
             activeLink.classList.add('active');
         }
-
-        // Add smooth fade effect
-        if (currentSection && currentSection !== targetSection) {
-            // Quick fade out current, fade in new
-            currentSection.style.opacity = '0';
-            targetSection.style.opacity = '0';
-            
-            setTimeout(() => {
-                targetSection.style.transition = 'opacity 0.3s ease';
-                targetSection.style.opacity = '1';
-                
-                // Clean up
-                setTimeout(() => {
-                    currentSection.style.opacity = '';
-                    currentSection.style.transition = '';
-                    targetSection.style.opacity = '';
-                    targetSection.style.transition = '';
-                    isTransitioning = false;
-                }, 300);
-            }, 50);
-        } else {
-            // No animation needed
-            isTransitioning = false;
-        }
     }
 
-    // Make showSection global so other functions can use it
-    window.showSection = showSection;
-
+    // Handle navigation clicks
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const href = this.getAttribute('href');
-            console.log('Nav link clicked:', href); // Debug log
-            
             if (href && href.startsWith('#')) {
                 const targetId = href.substring(1);
                 showSection(targetId);
             }
         });
+    });
+
+    // Handle other navigation elements (CTA button, back button, etc.)
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('a[href^="#"]') && !e.target.classList.contains('nav-link')) {
+            e.preventDefault();
+            const href = e.target.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const targetId = href.substring(1);
+                showSection(targetId);
+            }
+        }
     });
 
     // Initialize portfolio
@@ -297,23 +259,12 @@ function formatDate(dateString) {
     });
 }
 
-// Show individual blog post
+// Show individual blog post - Simple version
 function showBlogPost(blog) {
-    console.log('Showing blog post:', blog.title);
-    
-    if (window.isTransitioning) return;
-    
     const blogPostSection = document.getElementById('blog-post');
     const blogPostContent = document.getElementById('blog-post-content');
     
-    if (!blogPostSection || !blogPostContent) {
-        console.error('Blog post elements not found');
-        return;
-    }
-    
-    window.isTransitioning = true;
-    
-    // Hide all other sections immediately
+    // Hide all sections
     document.querySelectorAll('section').forEach(section => {
         section.classList.remove('active');
     });
@@ -341,23 +292,10 @@ function showBlogPost(blog) {
         </div>
     `;
     
-    // Update navigation - remove active from all nav links
+    // Clear navigation active states
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
     });
-    
-    // Add fade effect
-    blogPostSection.style.opacity = '0';
-    setTimeout(() => {
-        blogPostSection.style.transition = 'opacity 0.3s ease';
-        blogPostSection.style.opacity = '1';
-        
-        setTimeout(() => {
-            blogPostSection.style.opacity = '';
-            blogPostSection.style.transition = '';
-            window.isTransitioning = false;
-        }, 300);
-    }, 50);
 }
 
 // Utility functions for GitHub integration
@@ -407,54 +345,6 @@ async function createGitHubFile(filename, content, message) {
     }
 }
 
-// Smooth scrolling for anchor links (updated to work with new navigation)
-document.addEventListener('click', function(e) {
-    // Handle back button in blog posts
-    if (e.target.classList.contains('back-button')) {
-        e.preventDefault();
-        const href = e.target.getAttribute('href');
-        console.log('Back button clicked:', href);
-        
-        if (href && href.startsWith('#')) {
-            const targetId = href.substring(1);
-            if (window.showSection) {
-                window.showSection(targetId);
-            }
-        }
-        return;
-    }
-    
-    // Handle CTA button in hero section
-    if (e.target.classList.contains('cta-button')) {
-        e.preventDefault();
-        const href = e.target.getAttribute('href');
-        console.log('CTA button clicked:', href);
-        
-        if (href && href.startsWith('#')) {
-            const targetId = href.substring(1);
-            if (window.showSection) {
-                window.showSection(targetId);
-            }
-        }
-        return;
-    }
-    
-    // Handle other anchor links within the same section
-    if (e.target.matches('a[href^="#"]') && !e.target.classList.contains('nav-link')) {
-        const targetId = e.target.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        // Only scroll if target is within current active section
-        if (targetElement && targetElement.closest('section.active')) {
-            e.preventDefault();
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
-});
-
 // Add loading states and error handling
 function showLoading(container) {
     container.innerHTML = '<div class="loading">Loading...</div>';
@@ -462,12 +352,6 @@ function showLoading(container) {
 
 function showError(container, message = 'Something went wrong. Please try again.') {
     container.innerHTML = `<div class="loading" style="color: #ff6b6b;">${message}</div>`;
-}
-
-// Mobile menu toggle (if you want to add mobile navigation)
-function toggleMobileMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
 }
 
 // Search functionality for blogs (optional feature)
