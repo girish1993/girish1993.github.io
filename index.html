@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -13,34 +12,34 @@
         <div class="nav-container">
             <div class="logo">YourName</div>
             <ul class="nav-links">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero active">
+    <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Hello, I'm Your Name</h1>
-                <p>Machine Learning Engineer & Data Scientist | Building Scalable ML Pipelines & MLOps Solutions | AWS, Azure, Python</p>
-                <a href="#about" class="cta-button nav-link">Get to know me</a>
+                <p>Full-stack developer passionate about creating beautiful, functional web applications and sharing knowledge through code and writing.</p>
+                <a href="#about" class="cta-button">Get to know me</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
+    <section id="about" class="about">
         <div class="container">
             <h2>About Me</h2>
             <div class="about-content">
-                <img src="/assets/profile.jpg" class="about-image">
+                <div class="about-image">👨‍💻</div>
                 <div class="about-text">
-                    <p>I am a dedicated professional with expertise in software engineering and data science, specializing in building and deploying machine learning solutions for impactful business outcomes. My career began as a software developer, where a data-centric project sparked my passion for leveraging data to solve complex problems, leading me to pursue a Master’s degree in Data Science. Combining these disciplines, I excel in developing scalable, production-ready ML systems, with proficiency in end-to-end machine learning pipelines, MLOps practices, and CI/CD pipeline development.My core competencies include data wrangling, statistical analysis, feature engineering, hyperparameter optimization, model evaluation, and model deployment, with hands-on experience in cloud platforms like AWS and Azure, and data platforms like Snowflake. I am adept at using Python-based frameworks and tools for ML development and deployment. A quick learner, I actively engage with platforms like Kaggle to analyze complex datasets and stay current with advancements in data science and MLOps, ensuring adaptability to new challenges.</p>
-                    <!-- <p>When I'm not coding, you can find me writing technical blogs, contributing to open source projects, or exploring new technologies. I believe in continuous learning and sharing knowledge with the developer community.</p> -->
+                    <p>I'm a passionate developer with experience in modern web technologies. I love building applications that solve real-world problems and make people's lives easier.</p>
+                    <p>When I'm not coding, you can find me writing technical blogs, contributing to open source projects, or exploring new technologies. I believe in continuous learning and sharing knowledge with the developer community.</p>
                     <div class="skills">
                         <span class="skill-tag">JavaScript</span>
                         <span class="skill-tag">React</span>
@@ -57,36 +56,138 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
+    <section id="projects" class="projects">
         <div class="container">
             <h2>Featured Projects</h2>
-            <div class="projects-grid" id="projects-container">
-                <!-- Projects will be loaded here -->
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Awesome Web App</h3>
+                    <p>A full-stack web application built with React and Node.js that helps users manage their daily tasks with real-time collaboration features.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Socket.io</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/awesome-web-app" target="_blank" class="project-link">View Code</a>
+                        <a href="https://awesome-web-app.vercel.app" target="_blank" class="project-link">Live Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>ML Data Visualizer</h3>
+                    <p>An interactive data visualization tool that helps data scientists explore and understand machine learning datasets through beautiful charts and graphs.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/ml-data-visualizer" target="_blank" class="project-link">View Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Mobile Expense Tracker</h3>
+                    <p>A React Native mobile app for tracking expenses with category-based analytics, budget alerts, and cloud synchronization.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Redux</span>
+                        <span class="tech-tag">Chart.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/mobile-expense-tracker" target="_blank" class="project-link">View Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>API Gateway Service</h3>
+                    <p>A scalable microservices API gateway built with Node.js and Express, featuring rate limiting, authentication, and load balancing.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/api-gateway-service" target="_blank" class="project-link">View Code</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Blog Section -->
-    <section id="blog">
+    <section id="blog" class="blog">
         <div class="container">
             <h2>Latest Blog Posts</h2>
-            <div class="blog-grid" id="blog-container">
-                <!-- Blog posts will be loaded here -->
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">📝</div>
+                    <div class="blog-content">
+                        <div class="blog-date">March 15, 2024</div>
+                        <h3>Getting Started with React Hooks</h3>
+                        <p class="blog-excerpt">Learn how to use React Hooks to manage state and side effects in your functional components effectively.</p>
+                        <a href="blog-react-hooks.html" class="blog-link">Read More</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🚀</div>
+                    <div class="blog-content">
+                        <div class="blog-date">March 10, 2024</div>
+                        <h3>Building Scalable APIs with Node.js</h3>
+                        <p class="blog-excerpt">Best practices for designing and implementing scalable REST APIs using Node.js and Express.</p>
+                        <a href="blog-scalable-apis.html" class="blog-link">Read More</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🎨</div>
+                    <div class="blog-content">
+                        <div class="blog-date">March 5, 2024</div>
+                        <h3>Modern CSS Techniques for Better UX</h3>
+                        <p class="blog-excerpt">Explore modern CSS features like Grid, Flexbox, and custom properties to create better user experiences.</p>
+                        <a href="blog-modern-css.html" class="blog-link">Read More</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">⚡</div>
+                    <div class="blog-content">
+                        <div class="blog-date">February 28, 2024</div>
+                        <h3>Performance Optimization in Web Apps</h3>
+                        <p class="blog-excerpt">Essential techniques for improving web application performance, from bundle splitting to image optimization.</p>
+                        <a href="blog-performance.html" class="blog-link">Read More</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🔧</div>
+                    <div class="blog-content">
+                        <div class="blog-date">February 22, 2024</div>
+                        <h3>DevOps Best Practices for Developers</h3>
+                        <p class="blog-excerpt">Learn essential DevOps practices that every developer should know, from CI/CD to containerization.</p>
+                        <a href="blog-devops.html" class="blog-link">Read More</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🌐</div>
+                    <div class="blog-content">
+                        <div class="blog-date">February 15, 2024</div>
+                        <h3>Web Accessibility: A Complete Guide</h3>
+                        <p class="blog-excerpt">Make your web applications accessible to everyone with these comprehensive accessibility guidelines and best practices.</p>
+                        <a href="blog-accessibility.html" class="blog-link">Read More</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Post View (hidden by default) -->
-    <section id="blog-post" class="blog-post">
-        <div class="container">
-            <a href="#blog" class="back-button nav-link">← Back to Blog</a>
-            <div id="blog-post-content">
-                <!-- Individual blog post content will be loaded here -->
-            </div>
-        </div>
-    </section>
-
-    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
