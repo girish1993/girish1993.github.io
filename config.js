@@ -4,7 +4,7 @@ const CONFIG = {
   name: 'Girish Bhatta',
   title: 'ML Engineer | Data Scientist',
     heroDescription: 'Full-stack developer passionate about creating beautiful, functional web applications and sharing knowledge through code and writing.',
-  avatar: 'assets/profile.jpg', // You can use an emoji or replace with image path
+  avatar: './assets/profile.jpg', // You can use an emoji or replace with image path
     
     // About Section
     bio: [
@@ -58,52 +58,7 @@ const CONFIG = {
             excerpt: 'Learn how to use React Hooks to manage state and side effects in your functional components effectively.',
             icon: '📝',
             tags: ['React', 'JavaScript', 'Frontend'],
-            file: 'blogs/react-hooks.md'  // Path to markdown file
-        },
-        {
-            id: 'scalable-apis',
-            title: 'Building Scalable APIs with Node.js',
-            date: '2024-03-10',
-            excerpt: 'Best practices for designing and implementing scalable REST APIs using Node.js and Express.',
-            icon: '🚀',
-            tags: ['Node.js', 'API', 'Backend'],
-            file: 'blogs/scalable-apis.md'
-        },
-        {
-            id: 'modern-css',
-            title: 'Modern CSS Techniques for Better UX',
-            date: '2024-03-05',
-            excerpt: 'Explore modern CSS features like Grid, Flexbox, and custom properties to create better user experiences.',
-            icon: '🎨',
-            tags: ['CSS', 'Frontend', 'UX'],
-            file: 'blogs/modern-css.md'
-        },
-        {
-            id: 'performance-optimization',
-            title: 'Performance Optimization in Web Apps',
-            date: '2024-02-28',
-            excerpt: 'Essential techniques for improving web application performance, from bundle splitting to image optimization.',
-            icon: '⚡',
-            tags: ['Performance', 'JavaScript', 'Optimization'],
-            file: 'blogs/performance-optimization.md'
-        },
-        {
-            id: 'devops-practices',
-            title: 'DevOps Best Practices for Developers',
-            date: '2024-02-22',
-            excerpt: 'Learn essential DevOps practices that every developer should know, from CI/CD to containerization.',
-            icon: '🔧',
-            tags: ['DevOps', 'CI/CD', 'Docker'],
-            file: 'blogs/devops-practices.md'
-        },
-        {
-            id: 'web-accessibility',
-            title: 'Web Accessibility: A Complete Guide',
-            date: '2024-02-15',
-            excerpt: 'Make your web applications accessible to everyone with these comprehensive accessibility guidelines and best practices.',
-            icon: '🌐',
-            tags: ['Accessibility', 'UX', 'Web Standards'],
-            file: 'blogs/web-accessibility.md'
+            file: 'blogs/blog-react-hooks.md'  // Path to markdown file
         }
     ]
 };
