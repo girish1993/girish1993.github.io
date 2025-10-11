@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Your Name</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <style>
+        .blog-post {
+            padding: 6rem 0 4rem 0;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .blog-meta {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .blog-content h2 {
+            color: var(--text-primary);
+            margin: 2.5rem 0 1rem 0;
+            font-size: 1.8rem;
+        }
+        
+        .blog-content h3 {
+            color: var(--text-primary);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.4rem;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content code {
+            background: var(--bg-secondary);
+            color: var(--accent);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .blog-content pre {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+        }
+        
+        .blog-content pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-secondary);
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .blog-content blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-hover);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-muted);
+        }
+
+        .error {
+            text-align: center;
+            padding: 4rem;
+            color: #ff6b6b;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                font-size: 1rem;
+            }
+            
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .blog-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" id="nav-logo">YourName</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="blog-post">
+        <div class="container">
+            <a href="index.html#blog" class="back-link">← Back to Blog</a>
+            
+            <div id="blog-container">
+                <div class="loading">Loading blog post...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        // Get blog ID from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const blogId = urlParams.get('id');
+
+        // Load blog post
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update navigation logo
+            document.getElementById('nav-logo').textContent = CONFIG.name;
+            
+            if (!blogId) {
+                showError('Blog post not found. Please select a post from the blog page.');
+                return;
+            }
+
+            // Find the blog post in config
+            const blogPost = CONFIG.blogPosts.find(post => post.id === blogId);
+
+            if (!blogPost) {
+                showError('Blog post not found.');
+                return;
+            }
+
+            // Load and render the blog
+            loadBlogPost(blogPost);
+        });
+
+        function loadBlogPost(blogPost) {
+            const container = document.getElementById('blog-container');
+
+            // Format date
+            const formattedDate = new Date(blogPost.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Create tags HTML
+            const tagsHTML = blogPost.tags.map(tag => 
+                `<span class="tech-tag">${tag}</span>`
+            ).join('');
+
+            // Convert markdown to HTML
+            const htmlContent = marked.parse(blogPost.content);
+
+            // Update page title
+            document.title = `${blogPost.title} - ${CONFIG.name}`;
+
+            // Render blog post
+            container.innerHTML = `
+                <div class="blog-header">
+                    <h1 class="blog-title">${blogPost.title}</h1>
+                    <div class="blog-meta">${formattedDate}</div>
+                    <div class="blog-tags">
+                        ${tagsHTML}
+                    </div>
+                </div>
+                
+                <div class="blog-content">
+                    ${htmlContent}
+                </div>
+            `;
+        }
+
+        function showError(message) {
+            const container = document.getElementById('blog-container');
+            container.innerHTML = `<div class="error">${message}</div>`;
+        }
+    </script>
+</body>
+</html>
